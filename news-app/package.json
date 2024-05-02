@@ -9,6 +9,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^30.0.1"
+    "electron": "^5.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "electron-fetch": "^1.9.1",
+    "jquery": "^3.7.1",
+    "jsdom": "^24.0.0"
   }
 }

@@ -5,11 +5,46 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <title>Hello World!</title>
+    <link rel="stylesheet" href="css/photon.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./renderer.js"></script>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+    <div class="window">
+      <div class="window-content">
+        <nav class="nav-group">
+          <h5 class="nav-group-title">Category</h5>
+          <a class="nav-group-item active">
+            <span class="icon icon-briefcase"></span>
+            Business
+          </a>
+          <span class="nav-group-item">
+            <span class="icon icon-trophy"></span>
+            Sports
+          </span>
+          <span class="nav-group-item">
+            <span class="icon icon-users"></span>
+            Politics
+          </span>
+          <span class="nav-group-item">
+            <span class="icon icon-mobile"></span>
+            Technology
+          </span>
+          <span class="nav-group-item">
+            <span class="icon icon-star"></span>
+            Entertainment
+          </span>
+          <span class="nav-group-item">
+            <span class="icon icon-plus-squared"></span>
+            Health
+          </span>
+        </nav>
+      <div> 
+        <ul class="list-group containerArticles">
+        </ul>    
+      </div>    
+      </div>
+    </div>  
+    </div>
   </body>
 </html>
