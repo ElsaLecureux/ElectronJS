@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Photon</title>
+
+    <link rel="stylesheet" href="css/photon.css">
+    <style>
+        textarea {
+            resize: none;
+            border: none;
+            outline: none;
+            height: 100%;
+            width: 100%;
+        }
+          
+    </style>
+
+  </head>
+
+  <body>
+      <div class="window">
+            <header class="toolbar toolbar-header">
+                <div class="toolbar-actions">
+                  <div class="btn-group">
+                    <button id="plusButton" class="btn btn-default">
+                      <span class="icon icon-plus"></span>
+                    </button>
+                    <button id="minusButton" class="btn btn-default">
+                      <span class="icon icon-minus"></span>
+                    </button>
+                  </div >
+              
+                  <button id="saveButton" class="btn b
+                  tn-default pull-right">
+                    <span class="icon icon-download icon-text"></span>
+                    Save
+                  </button>
+                </div>
+            </header>
+
+            <div class="window-content">
+                  <textarea id="textArea"></textarea>
+            </div>
+            
+      </div>
+  </body>
+
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        let sizeText = 10;
+
+        function makeFontBigger() {
+            const text = document.getElementById("textArea");
+            sizeText = sizeText + 10;
+            text.style.fontSize = sizeText + "px";
+        }
+
+        function makeFontSmaller() {
+            sizeText = sizeText - 10;
+            text.style.fontSize = sizeText + "px";
+        }
+
+        function save() {
+            const textTyped= text.value;
+            console.log(textTyped);
+            ipcRenderer.send('save', textTyped);  
+        } 
+        
+        ipcRenderer.on('response', (event, response) => {
+          console.log('response', response);
+          if (response === 'success') {
+            text.style.backgroundColor = "#7cb518";
+            setTimeout(() => {
+              text.style.backgroundColor = "#FFFFFF";
+            }, "1000");
+          } else {
+            text.style.backgroundColor = "#d62828";
+            setTimeout(() => {
+              text.style.backgroundColor = "#FFFFFF";
+            }, "1000");
+            
+          }
+        });
+
+        ipcRenderer.on('context-menu-command', (e, command) => {
+              save();
+        })
+
+       
+        const plusButton = document.getElementById("plusButton");
+        plusButton.addEventListener("click", makeFontBigger);
+
+        const minusButton = document.getElementById("minusButton");
+        minusButton.addEventListener("click", makeFontSmaller);
+
+        const saveButton = document.getElementById('saveButton');
+        saveButton.addEventListener("click", save);
+
+        const text = document.getElementById("textArea");
+
+
+    </script>
+
+</html>
