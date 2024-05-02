@@ -4,8 +4,15 @@ const $ = require('jquery');
 let articles;
 
 const createArticlesList = () => {
+    //son image, son titre pointant vers l'URL de l'article, sa date de publication, son auteur et sa description
     articles.map((article) => {
-        $('.containerArticles').append(`<li>${article.title}</li>`);
+        $('.containerArticles').append(`<li class="list-group-item">
+            <img src=${article.urlToImage}>
+            <a href=${article.url}>${article.title}</a>
+            <p> author:${article.author}</p>
+            <p>${article.publishedAt}</p>
+            <p>${article.description}</p>
+        </li>`);
     })    
 }
 
@@ -17,8 +24,6 @@ ipcRenderer.on('articlesData', (event, data) => {
 
 const handleClick = (event) => {
     $( ".nav-group-item" ).removeClass( "active" );
-    console.log(event.target);
-    $target = $(event.target);
     $(event.target).addClass( "active" );
 }
 
