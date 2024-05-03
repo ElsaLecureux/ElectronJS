@@ -13,32 +13,34 @@
       <div class="window-content">
         <nav class="nav-group">
           <h5 class="nav-group-title">Category</h5>
-          <a class="nav-group-item active">
+          <span id="business" class="nav-group-item active" onclick="selectCategory(event)">
             <span class="icon icon-briefcase"></span>
             Business
-          </a>
-          <span class="nav-group-item">
+          </span>
+          <span id="sports" class="nav-group-item" onclick="selectCategory(event)"> 
             <span class="icon icon-trophy"></span>
             Sports
           </span>
-          <span class="nav-group-item">
+          <span id="politics" class="nav-group-item" onclick="selectCategory(event)">
             <span class="icon icon-users"></span>
             Politics
           </span>
-          <span class="nav-group-item">
+          <span id="technology" class="nav-group-item" onclick="selectCategory(event)">
             <span class="icon icon-mobile"></span>
             Technology
           </span>
-          <span class="nav-group-item">
+          <span id="entertainment" class="nav-group-item" onclick="selectCategory(event)">
             <span class="icon icon-star"></span>
             Entertainment
           </span>
-          <span class="nav-group-item">
+          <span id="health" class="nav-group-item" onclick="selectCategory(event)">
             <span class="icon icon-plus-squared"></span>
             Health
           </span>
         </nav>
         <div> 
+          <label for="name">Rechercher un article:</label>
+          <input type="text" id="search">
           <ul class="list-group containerArticles">
           </ul>    
         </div>    
