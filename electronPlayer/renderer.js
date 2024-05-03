@@ -1,17 +1,34 @@
 const { parseFile } = require('music-metadata');
 const { inspect } = require('util');
+const $ = require('jquery')
 
-//./music/KillingInTheName.mp3
+let files;
+
+function chooseMusic(){
+  $('input').click()
+}
 
 const loadMusic = async () => {
   try {
-    console.log('inside loadMusic');
-    const metadata = await parseFile('./musics/KillingInTheName.mp3');
-    console.log(inspect(metadata, { showHidden: false, depth: null }));
+    files = $('input').get(0).files;
+    console.log(files);
+    // files.map( async (file) => {
+    //     // a revoir
+    //     path = file.path
+    //     const metadata = await parseFile(path);
+    //     file = {
+    //         path: file.path,
+    //         title: metadata.common.title,
+    //         artist: metadata.common.albumartist,
+    //         //durée: metadata.,
+    //     }
+    //     console.log(file);
+    //     return file;
+    // })
+    // create files array with inportant informations 
+    
+    // create tr inside table for each file:
   } catch (error) {
     console.error(error.message);
   }
 }
-
-
-console.log('hello from the renderer');

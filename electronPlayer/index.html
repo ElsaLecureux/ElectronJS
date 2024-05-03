@@ -1,40 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player</title>
-    <link rel="stylesheet" href="css/photon.css">
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-</head>
-<body>
-    <header class="toolbar toolbar-header">
-        <h1 class="title">Music Player</h1>
-      
-        <div class="toolbar-actions">
-          <div class="btn-group">
-            <button class="btn btn-default">
-              <span class="icon icon-play"></span>
-            </button>
-            <button class="btn btn-default">
-              <span class="icon icon-stop"></span>
-            </button>
-            <button class="btn btn-default active">
-              <span class="icon icon-pause"></span>
-            </button>
-          </div>
-      
+<html>
+    <head>
+        <title>Musasic</title>
+        <link rel="stylesheet" href="css/photon.css">
+    </head>
+    <body>
+        <div class="window">
+            <header class="toolbar toolbar-header">
+                <div class="toolbar-actions">
+                    <div class="btn-group">
+                        <button class="btn btn-default">
+                            <span class="icon icon-to-start"></span>
+                        </button>
+                        <button class="btn btn-default active" id="play-button">
+                            <span class="icon icon-play"></span>
+                        </button>
+                        <button class="btn btn-default">
+                            <span class="icon icon-to-end"></span>
+                        </button>
+                    </div>
+
+                    <span style="margin-left:40px">
+                        <span id="time-left">00:00</span> | <span id="total-time">00:00</span>
+                    </span>
+
+                    <button class="btn btn-default btn-large pull-right" onclick="chooseMusic()">
+                        <span class="icon icon-plus icon-text"></span>Add
+                    </button>
+                </div>
+                
+            </header>
+
+            <div class="window-content">
+                <input type="file" style="display: none" multiple onchange="loadMusic()">
+                <audio src=""></audio>
+                <div class="padding-more">
+                        <h4></h4>
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Artist</th>
+                                    <th>Duration</th>
+                                </tr>
+                            </thead>
+        
+                            <tbody id="table-body">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="toolbar toolbar-footer">
+                <div class="toolbar-actions">
+                    <button class="btn btn-default pull-right">
+                        Clear Playlist
+                    </button>
+                </div>
+            </footer>
+
         </div>
-      </header>
-      
-      <footer class="toolbar toolbar-footer">
-        <div class="toolbar-actions">      
-          <button class="btn btn-primary pull-right" onclick="loadMusic()">
-            Add
-          </button>
-        </div>
-      </footer>
-</body>
-<script src="renderer.js"></script>
+        <script src="renderer.js"></script>
+    </body>
 </html>
